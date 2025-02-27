@@ -96,7 +96,7 @@ def predict():
         
         # ✅ Step 4: Make a prediction
         prediction_int = int(model.predict(features_scaled)[0])  # Get prediction
-        print("Model Prediction:", prediction)  # Debugging: See raw model output
+        print("Model Prediction:", prediction_int)  # Debugging: See raw model output
         
         # ✅ Step 5: Return the prediction as a JSON response
         # Convert prediction to human-readable format with team names

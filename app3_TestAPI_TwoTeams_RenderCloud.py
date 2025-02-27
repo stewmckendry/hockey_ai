@@ -23,5 +23,14 @@ data = {"team1": "MTL", "team2": "TOR"}
 # Send a POST request to the Flask API
 response = requests.post(url, json=data)
 
+# Print the raw response text for debugging
+print("Raw API Response:", response.text)  # <-- This helps debug if response is not JSON
+
 # Print the response from the Flask API
-print(response.json())  # Expected output: {"prediction": TOR}
+# Expected output: {"prediction": TOR}
+try:
+    prediction = response.json()["prediction"]
+    print("Prediction:", prediction)
+except requests.exceptions.JSONDecodeError:
+    print("Error: API did not return valid JSON.")
+  
