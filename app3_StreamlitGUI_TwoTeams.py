@@ -42,8 +42,12 @@ if st.button("Predict Winner"):
     response = requests.post(API_URL, json=data)
 
     # Get the prediction from the JSON response
-    prediction = response.json()["prediction"]
+    response_json = response.json()
 
-    # Display Result
-    st.success(f"🏆 {prediction} is Predicted to Win!")
+    # Handle API response
+    if "prediction" in response_json:
+        st.success(f"Predicted Winner: {response_json['prediction']}")
+    else:
+        st.error(f"Error: {response_json.get('error', 'Unknown error')}")
+
     
