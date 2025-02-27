@@ -42,6 +42,11 @@ def predict():
      # Inputs are two team names for prediction
      # Model expects team abbreviations in uppercase (e.g., "TOR" for Toronto Maple Leafs)
     data = request.get_json()  # Get input from user
+    print("Received Data:", data)  # Debugging: See what is sent to the API
+
+    if not data:
+        return jsonify({"error": "No JSON data received"}), 400  # ✅ Handle empty request
+
     home_team = data.get("team1").upper()
     away_team = data.get("team2").upper()
     print("Received Data:", data, home_team, away_team)  # Debugging: See what is sent to the API
