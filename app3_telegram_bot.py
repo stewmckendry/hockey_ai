@@ -18,7 +18,7 @@ import requests
 TELEGRAM_BOT_TOKEN = "7409084962:AAFvzSJdcavSXWFO5dsTFzJXTrTVEfy02UU"
 
 # Replace with your actual Flask API URL (Flask API hosted on Render)
-FLASK_API_URL = "https://hockey-ai.onrender.com/predict"  # Replace with your actual Flask API URL
+FLASK_API_URL = "https://hockey-ai-two-teams.onrender.com/predict"  # Replace with your actual Flask API URL
 
 # Define the /start command handler
 async def start(update: Update, context: CallbackContext) -> None:
@@ -26,7 +26,7 @@ async def start(update: Update, context: CallbackContext) -> None:
 
 # Define the /predict command handler
 # The /predict command takes two team names as arguments and sends a POST request to the Flask API to get a prediction
-# Example usage: /predict Leafs Canadiens  
+# Example usage: /predict TOR MTL  
 async def predict(update: Update, context: CallbackContext) -> None:
     # Check if the user provided exactly two team names
     teams = context.args
