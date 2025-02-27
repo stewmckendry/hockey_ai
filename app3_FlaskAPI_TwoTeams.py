@@ -95,11 +95,13 @@ def predict():
         print("Processed Features:", features_scaled)  # Debugging: See formatted features
         
         # ✅ Step 4: Make a prediction
-        prediction = model.predict(features_scaled)[0]  # Get prediction
+        prediction_int = model.predict(features_scaled)[0]  # Get prediction
         print("Model Prediction:", prediction)  # Debugging: See raw model output
         
         # ✅ Step 5: Return the prediction as a JSON response
-        return jsonify({"prediction": int(prediction)})
+        # Convert prediction to human-readable format with team names
+        prediction = {home_team}" Wins" if prediction_int == 1 else {away_team}" Wins"
+        return jsonify({"prediction": prediction)})
     
     except Exception as e:
         print("Error:", e)
