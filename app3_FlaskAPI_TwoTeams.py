@@ -100,8 +100,8 @@ def predict():
         
         # ✅ Step 5: Return the prediction as a JSON response
         # Convert prediction to human-readable format with team names
-        prediction = {home_team}" Wins" if prediction_int == 1 else {away_team}" Wins"
-        return jsonify({"prediction": prediction)})
+        prediction = home_team if prediction_int == 1 else away_team
+        return jsonify({"prediction": str(prediction)})
     
     except Exception as e:
         print("Error:", e)
