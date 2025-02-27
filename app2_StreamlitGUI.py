@@ -7,6 +7,11 @@
 # The API URL is updated to the deployed API URL on Render
 # This script can be run locally (streamlit run app2_StreamlitGUI.py) or can be deployed to Cloud (Streamlit Cloud)
 
+# Potential future improvements:
+# On the app, have user pick a team - both home and away - and then pre-load the feature values for each team, 
+# and run the prediction
+
+
 # Import Libraries
 import streamlit as st
 import requests
