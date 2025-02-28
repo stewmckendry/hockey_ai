@@ -44,11 +44,17 @@ def predict():
     data = request.get_json()  # Get input from user
     print("Received Data:", data)  # Debugging: See what is sent to the API
 
-    if not data:
-        return jsonify({"error": "No JSON data received"}), 400  # ✅ Handle empty request
+    # Check if the required keys are present in the request data
+    if not data or "home_team" not in data or "away_team" not in data:
+        return jsonify({"error": "Invalid input format. Please provide 'home_team' and 'away_team'."}), 400
 
-    home_team = data.get("team1").upper()
-    away_team = data.get("team2").upper()
+    # Extract team names from JSON
+    try:
+        home_team = data["home_team"].upper()
+        away_team = data["away_team"].upper()
+    except AttributeError:
+        return jsonify({"error": "Invalid input format. Team names must be strings."}), 400
+
     print("Received Data:", data, home_team, away_team)  # Debugging: See what is sent to the API
 
     # Lookup teams entered in CSV file based on team abbreviations

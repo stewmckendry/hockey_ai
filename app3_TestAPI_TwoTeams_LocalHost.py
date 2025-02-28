@@ -19,5 +19,11 @@ data = {"home_team": "ANA", "away_team": "BOS"}
 # Send a POST request to the Flask API
 response = requests.post(url, json=data)
 
+# Print the raw response content for debugging
+print("Response Content:", response.content)
+
 # Print the response from the Flask API
-print(response.json())  # Expected output: {"prediction": 1}
+try:
+    print(response.json())  # Expected output: {"prediction": 1}
+except requests.exceptions.JSONDecodeError as e:
+    print("Error decoding JSON:", e)
