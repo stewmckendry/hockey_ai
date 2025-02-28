@@ -36,15 +36,24 @@ async def predict(update: Update, context: CallbackContext) -> None:
         await update.message.reply_text("Please provide exactly two team names. Example: /predict Leafs Canadiens")
         return
 
-    # Send a POST request to the Flask API with the two team names
-    response = requests.post(FLASK_API_URL, json={"home_team": teams[0], "away_team": teams[1]})
+     # API request
+    try:
+        # Send a POST request to the Flask API with the two team names
+        response = requests.post(FLASK_API_URL, json={"home_team": teams[0], "away_team": teams[1]})
 
-    # Check if the response status code is 200 (OK)
-    if response.status_code == 200:
-        prediction = response.json().get("prediction", "Could not retrieve prediction.")
-        await update.message.reply_text(f"Prediction: {prediction}")
-    else:
-        await update.message.reply_text("Error: Could not connect to the prediction API.")
+        # Debugging: Print full response in case of error
+        print("API Response Status Code:", response.status_code)
+        print("API Response Text:", response.text)
+
+        # Check if the response status code is 200 (OK)
+        if response.status_code == 200:
+            prediction = response.json().get("prediction", "Could not retrieve prediction.")
+            await update.message.reply_text(f"Prediction: {prediction}")
+        else:
+            await update.message.reply_text("Error: Could not connect to the prediction API.")
+    except requests.exceptions.RequestException as e:
+        print("Error connecting to the API:", e)
+        await update.message.reply_text("Error: Could not connect to the prediction API.")  
 
 # Main function to run the Telegram bot
 def main():
