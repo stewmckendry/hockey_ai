@@ -31,8 +31,8 @@ if st.button("Predict Winner"):
     
     # Prepare the input features as a dictionary
     data = {
-        "team 1": home_team,
-        "team 2": away_team
+        "home_team": home_team,
+        "away_team": away_team
     }
     
     # Send a POST request to the API
