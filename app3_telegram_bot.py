@@ -37,7 +37,7 @@ async def predict(update: Update, context: CallbackContext) -> None:
         return
 
     # Send a POST request to the Flask API with the two team names
-    response = requests.post(FLASK_API_URL, json={"team1": teams[0], "team2": teams[1]})
+    response = requests.post(FLASK_API_URL, json={"home_team": teams[0], "away_team": teams[1]})
 
     # Check if the response status code is 200 (OK)
     if response.status_code == 200:

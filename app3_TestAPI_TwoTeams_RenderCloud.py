@@ -14,7 +14,7 @@ url = "https://hockey-ai-two-teams.onrender.com/predict"
 
 # Example input features to submit in the POST request
 # Two teams are sent as input features - hard coded for testing
-data = {"team1": "MTL", "team2": "TOR"}
+data = {"home_team": "ANA", "away_team": "BOS"}
 
 # Send a POST request to the Flask API
 response = requests.post(url, json=data)
