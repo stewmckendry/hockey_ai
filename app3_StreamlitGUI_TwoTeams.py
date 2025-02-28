@@ -1,11 +1,8 @@
 # Description: Streamlit GUI for NHL Game Winner Predictor
-# User can input team and player stats to predict the game winner
+# User can input two NHL teams to predict the game winner
 # The input features are sent to the deployed Flask API for prediction
 # The prediction is displayed to the user in the Streamlit UI
-# The user can click a button to submit the prediction request
-# The same Flask API from app1_Flask.py is used to make predictions
-# The API URL is updated to the deployed API URL on Render
-# This script can be run locally (streamlit run app2_StreamlitGUI.py) or can be deployed to Cloud (Streamlit Cloud)
+
 
 # Potential future improvements:
 # On the app, have user pick a team - both home and away - and then pre-load the feature values for each team, 

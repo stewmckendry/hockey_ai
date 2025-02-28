@@ -3,8 +3,8 @@
 # The web server will have two routes (API endpoints):
 # - / : Home page
 # - /predict : Predict game outcomes using the trained model
-# The /predict route expects a POST request with a JSON body containing the features
-# The model will return a JSON response with the prediction (0 or 1)   
+# The model converts the team names to team stats and then generates the features for the model to make a prediction
+# The model will return a JSON response with the prediction (team name)  
 
 
 # 🚀 Import the libraries
